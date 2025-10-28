@@ -30,7 +30,6 @@
         {
             gbTipo = new GroupBox();
             txtDias = new TextBox();
-            cmbPersonas = new ComboBox();
             cmbTipo = new ComboBox();
             lblDías = new Label();
             lblPersonas = new Label();
@@ -42,14 +41,15 @@
             grbFormasDePago = new GroupBox();
             cmbTarjetas = new ComboBox();
             lblTarjetas = new Label();
-            rdbTarjeta = new RadioButton();
-            rdbEfectivo = new RadioButton();
+            optTarjeta = new RadioButton();
+            optEfectivo = new RadioButton();
             grbTitular = new GroupBox();
             txtTeléfonos = new TextBox();
             txtNombre = new TextBox();
             lblTeléfonos = new Label();
             lblNombre = new Label();
             btnAceptar = new Button();
+            txtPersonas = new TextBox();
             gbTipo.SuspendLayout();
             grbAdicionales.SuspendLayout();
             grbFormasDePago.SuspendLayout();
@@ -58,8 +58,8 @@
             // 
             // gbTipo
             // 
+            gbTipo.Controls.Add(txtPersonas);
             gbTipo.Controls.Add(txtDias);
-            gbTipo.Controls.Add(cmbPersonas);
             gbTipo.Controls.Add(cmbTipo);
             gbTipo.Controls.Add(lblDías);
             gbTipo.Controls.Add(lblPersonas);
@@ -77,14 +77,6 @@
             txtDias.Name = "txtDias";
             txtDias.Size = new Size(119, 23);
             txtDias.TabIndex = 4;
-            // 
-            // cmbPersonas
-            // 
-            cmbPersonas.FormattingEnabled = true;
-            cmbPersonas.Location = new Point(306, 47);
-            cmbPersonas.Name = "cmbPersonas";
-            cmbPersonas.Size = new Size(121, 23);
-            cmbPersonas.TabIndex = 3;
             // 
             // cmbTipo
             // 
@@ -168,8 +160,8 @@
             // 
             grbFormasDePago.Controls.Add(cmbTarjetas);
             grbFormasDePago.Controls.Add(lblTarjetas);
-            grbFormasDePago.Controls.Add(rdbTarjeta);
-            grbFormasDePago.Controls.Add(rdbEfectivo);
+            grbFormasDePago.Controls.Add(optTarjeta);
+            grbFormasDePago.Controls.Add(optEfectivo);
             grbFormasDePago.Location = new Point(268, 185);
             grbFormasDePago.Name = "grbFormasDePago";
             grbFormasDePago.Size = new Size(508, 161);
@@ -180,6 +172,7 @@
             // cmbTarjetas
             // 
             cmbTarjetas.FormattingEnabled = true;
+            cmbTarjetas.Items.AddRange(new object[] { "Card red", "Card green", "Card blue" });
             cmbTarjetas.Location = new Point(211, 119);
             cmbTarjetas.Name = "cmbTarjetas";
             cmbTarjetas.Size = new Size(270, 23);
@@ -194,27 +187,27 @@
             lblTarjetas.TabIndex = 2;
             lblTarjetas.Text = "Tarjetas";
             // 
-            // rdbTarjeta
+            // optTarjeta
             // 
-            rdbTarjeta.AutoSize = true;
-            rdbTarjeta.Location = new Point(11, 86);
-            rdbTarjeta.Name = "rdbTarjeta";
-            rdbTarjeta.Size = new Size(60, 19);
-            rdbTarjeta.TabIndex = 1;
-            rdbTarjeta.TabStop = true;
-            rdbTarjeta.Text = "Tarjeta";
-            rdbTarjeta.UseVisualStyleBackColor = true;
+            optTarjeta.AutoSize = true;
+            optTarjeta.Location = new Point(11, 86);
+            optTarjeta.Name = "optTarjeta";
+            optTarjeta.Size = new Size(60, 19);
+            optTarjeta.TabIndex = 1;
+            optTarjeta.TabStop = true;
+            optTarjeta.Text = "Tarjeta";
+            optTarjeta.UseVisualStyleBackColor = true;
             // 
-            // rdbEfectivo
+            // optEfectivo
             // 
-            rdbEfectivo.AutoSize = true;
-            rdbEfectivo.Location = new Point(11, 47);
-            rdbEfectivo.Name = "rdbEfectivo";
-            rdbEfectivo.Size = new Size(67, 19);
-            rdbEfectivo.TabIndex = 0;
-            rdbEfectivo.TabStop = true;
-            rdbEfectivo.Text = "Efectivo";
-            rdbEfectivo.UseVisualStyleBackColor = true;
+            optEfectivo.AutoSize = true;
+            optEfectivo.Location = new Point(11, 47);
+            optEfectivo.Name = "optEfectivo";
+            optEfectivo.Size = new Size(67, 19);
+            optEfectivo.TabIndex = 0;
+            optEfectivo.TabStop = true;
+            optEfectivo.Text = "Efectivo";
+            optEfectivo.UseVisualStyleBackColor = true;
             // 
             // grbTitular
             // 
@@ -271,6 +264,13 @@
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
+            // txtPersonas
+            // 
+            txtPersonas.Location = new Point(307, 47);
+            txtPersonas.Name = "txtPersonas";
+            txtPersonas.Size = new Size(123, 23);
+            txtPersonas.TabIndex = 5;
+            // 
             // frmReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -304,8 +304,8 @@
         private Label lblTipo;
         private GroupBox grbAdicionales;
         private GroupBox grbFormasDePago;
-        private RadioButton rdbTarjeta;
-        private RadioButton rdbEfectivo;
+        private RadioButton optTarjeta;
+        private RadioButton optEfectivo;
         private GroupBox grbTitular;
         private Label lblTarjetas;
         private CheckBox chkTelevisor;
@@ -317,7 +317,7 @@
         private TextBox txtTeléfonos;
         private TextBox txtNombre;
         private Button btnAceptar;
-        private ComboBox cmbPersonas;
         private TextBox txtDias;
+        private TextBox txtPersonas;
     }
 }
