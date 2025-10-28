@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             gbTipo = new GroupBox();
+            txtDias = new TextBox();
             cmbPersonas = new ComboBox();
             cmbTipo = new ComboBox();
             lblDías = new Label();
@@ -49,7 +50,6 @@
             lblTeléfonos = new Label();
             lblNombre = new Label();
             btnAceptar = new Button();
-            txtDias = new TextBox();
             gbTipo.SuspendLayout();
             grbAdicionales.SuspendLayout();
             grbFormasDePago.SuspendLayout();
@@ -70,6 +70,13 @@
             gbTipo.TabIndex = 0;
             gbTipo.TabStop = false;
             gbTipo.Text = "Tipo de cabaña";
+            // 
+            // txtDias
+            // 
+            txtDias.Location = new Point(500, 47);
+            txtDias.Name = "txtDias";
+            txtDias.Size = new Size(119, 23);
+            txtDias.TabIndex = 4;
             // 
             // cmbPersonas
             // 
@@ -256,20 +263,13 @@
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(613, 560);
+            btnAceptar.Location = new Point(613, 558);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(163, 38);
             btnAceptar.TabIndex = 4;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
-            // 
-            // txtDias
-            // 
-            txtDias.Location = new Point(500, 47);
-            txtDias.Name = "txtDias";
-            txtDias.Size = new Size(119, 23);
-            txtDias.TabIndex = 4;
             // 
             // frmReservas
             // 
