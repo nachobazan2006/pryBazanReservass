@@ -4,17 +4,23 @@ namespace pryBazanReservas
 {
     public partial class frmReservas : Form
     {
+
         public frmReservas()
         {
             InitializeComponent();
         }
 
-        private const float TipoA = 20;
-        public const float TipoB = 34;
-        const float Cocina = 1;
-        const float Heladera = 1.5f;
-        const float Televisor = 2;
-        const float PorPersona = 1;
+
+        public struct Cabaña
+        {
+            public const float TipoA = 20;
+            public const float TipoB = 34;
+            public const float Cocina = 1;
+            public const float Heladera = 1.5f;
+            public const float Televisor = 2;
+            public const float PorPersona = 1;
+        }
+
 
         private void frmReservas_Load(object sender, EventArgs e)
         {
@@ -51,21 +57,23 @@ namespace pryBazanReservas
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Determinar máximo de personas según el tipo seleccionado
-            int maxPersonas = 4;
+            int I = 0;
             if (cmbTipo.SelectedIndex == 0)
             {
-                maxPersonas = 4; // Tipo A
+                    for (I = 1; I <= 4; I++)
+                    {
+                        cmbPersonas.Items.Add(I);
+                }
+
             }
-            else
+            else 
             {
-                maxPersonas = 8; // Tipo B
+                for (I = 1; I <= 8; I++)
+                {
+                    cmbPersonas.Items.Add(I);
+                }
             }
-
-         
-            txtPersonas.Text = "1";
-            txtPersonas.Tag = maxPersonas;
-
-           
+            cmbPersonas.SelectedIndex = 0;
         }
 
         private void optEfectivo_CheckedChanged(object sender, EventArgs e)
@@ -79,36 +87,7 @@ namespace pryBazanReservas
             cmbTarjetas.SelectedIndex = 0;
         }
         //Condiciones para ;habilitar el botón Aceptar
-        private void txtDias_TextChanged(object sender, EventArgs e)
-        {
-            // condiciones para habilitar o no el botón "Aceptar"
-            if (txtDias.Text != "" && txtDias.Text != "0" &&
-            txtNombre.Text != "" && txtTeléfonos.Text != "")
-            {
-                btnAceptar.Enabled = true;
-            }
-            else
-            {
-                btnAceptar.Enabled = false;
-            }
-        }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-            // condiciones para habilitar o no el botón "Aceptar"
-            if (txtDias.Text != "" && txtDias.Text != "0" &&
-            txtNombre.Text != "" && txtTeléfonos.Text != "")
-            {
-                btnAceptar.Enabled = true;
-            }
-            else
-            {
-                btnAceptar.Enabled = false;
-            }
-        }
-        
-
-
+      
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             float PrecioBase;
@@ -149,11 +128,11 @@ namespace pryBazanReservas
             }
 
             // Obligar al usuario a poner al menos una persona
-            if (txtPersonas.Text == "")
+            if (cmbPersonas.Text == "")
             {
                 MessageBox.Show("Seleccione al menos 1 persona", "Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPersonas.Focus();
+                cmbPersonas.Focus();
                 return;
             }
             if (cmbTipo.SelectedIndex == -1)
@@ -173,24 +152,24 @@ namespace pryBazanReservas
                 //control del tipo de cabaña
                 if (cmbTipo.SelectedIndex == 0)
                 {
-                    PrecioBase = TipoA;
+                    PrecioBase = Cabaña.TipoA;
                 }
                 else
                 {
-                    PrecioBase = TipoB;
+                    PrecioBase = Cabaña.TipoB;
                 }
                 Opcionales = 0;
                 if (chkCocina.Checked == true)
                 {
-                    Opcionales = Opcionales + Cocina;
+                    Opcionales = Opcionales + Cabaña.Cocina;
                 }
                 if (chkHeladera.Checked == true)
                 {
-                    Opcionales = Opcionales + Heladera;
+                    Opcionales = Opcionales + Cabaña.Heladera;
                 }
                 if (chkTelevisor.Checked == true)
                 {
-                    Opcionales = Opcionales + Televisor;
+                    Opcionales = Opcionales + Cabaña.Televisor;
                 }
                 // determinar el total por la cantidad de dìas
                 Total = (PrecioBase + Opcionales) * Dias;
@@ -219,9 +198,8 @@ namespace pryBazanReservas
                 chkCocina.Checked = false;
                 chkHeladera.Checked = false;
                 chkTelevisor.Checked = false;
-                // en los radiobuttons se asigna sólo el que debe quedar en true
-
-                optEfectivo.Checked = true;
+                cmbPersonas.Items.Clear();
+                optEfectivo.Checked = false;
                 txtNombre.Text = "";
                 txtTeléfonos.Text = "";
             }

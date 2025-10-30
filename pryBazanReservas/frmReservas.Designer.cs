@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             gbTipo = new GroupBox();
+            cmbPersonas = new ComboBox();
             txtDias = new TextBox();
             cmbTipo = new ComboBox();
             lblDías = new Label();
@@ -49,7 +50,6 @@
             lblTeléfonos = new Label();
             lblNombre = new Label();
             btnAceptar = new Button();
-            txtPersonas = new TextBox();
             gbTipo.SuspendLayout();
             grbAdicionales.SuspendLayout();
             grbFormasDePago.SuspendLayout();
@@ -58,7 +58,7 @@
             // 
             // gbTipo
             // 
-            gbTipo.Controls.Add(txtPersonas);
+            gbTipo.Controls.Add(cmbPersonas);
             gbTipo.Controls.Add(txtDias);
             gbTipo.Controls.Add(cmbTipo);
             gbTipo.Controls.Add(lblDías);
@@ -70,6 +70,15 @@
             gbTipo.TabIndex = 0;
             gbTipo.TabStop = false;
             gbTipo.Text = "Tipo de cabaña";
+            // 
+            // cmbPersonas
+            // 
+            cmbPersonas.FormattingEnabled = true;
+            cmbPersonas.Items.AddRange(new object[] { "1", "2", "3", "4", "5", "6", "7", "8" });
+            cmbPersonas.Location = new Point(307, 47);
+            cmbPersonas.Name = "cmbPersonas";
+            cmbPersonas.Size = new Size(121, 23);
+            cmbPersonas.TabIndex = 5;
             // 
             // txtDias
             // 
@@ -264,13 +273,6 @@
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
-            // txtPersonas
-            // 
-            txtPersonas.Location = new Point(307, 47);
-            txtPersonas.Name = "txtPersonas";
-            txtPersonas.Size = new Size(123, 23);
-            txtPersonas.TabIndex = 5;
-            // 
             // frmReservas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -318,6 +320,6 @@
         private TextBox txtNombre;
         private Button btnAceptar;
         private TextBox txtDias;
-        private TextBox txtPersonas;
+        private ComboBox cmbPersonas;
     }
 }
